@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ParkingModule } from './parking/parking.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { getConnectionOptions } from 'typeorm';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { getConnectionOptions } from 'typeorm';
           autoLoadEntities: true,
         }),
     }),
+    AuthModule,
   ],
 })
 export class AppModule { }
