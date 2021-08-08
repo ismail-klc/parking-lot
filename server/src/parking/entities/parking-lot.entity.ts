@@ -24,6 +24,9 @@ export class ParkingLot {
     @Column()
     country: string;
 
+    @Column()
+    parkingRate: number;
+
     @OneToMany(type => ParkingFloor, type => type.lot)
     parkingFloors: ParkingFloor[];
 }

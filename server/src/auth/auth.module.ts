@@ -5,6 +5,7 @@ import { AuthController } from './auth.controller';
 import { User } from './entities/user.entity';
 import { QueryHandlers } from './queries/handlers';
 import { CommandHandlers } from './commands/handlers';
+import { AuthService } from './auth.service';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { CommandHandlers } from './commands/handlers';
   ],
   controllers: [AuthController],
   providers: [
+    AuthService,
     ...CommandHandlers,
     ...QueryHandlers
 ]

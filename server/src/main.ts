@@ -10,6 +10,7 @@ async function bootstrap() {
   app.use(cookieParser());
   app.useGlobalPipes(new ValidationPipe());
 
+
   await app.listen(3000, () => {
     console.log("listening on port 3000");
   });

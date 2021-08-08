@@ -1,0 +1,21 @@
+admin:
+    + add parking lot
+    + add parking floor
+    + add parking spot
+    + add parking attendant
+    add/modify parking rate
+    + view account
+    update account
+    + login/logout
+attendant:
+    + view account
+    update account
+    + login/logout
+    create ticket
+    scan ticket
+    pay ticket
+system: 
+    assign a parking spot to a vehicle
+    remove a vehicle from a parking spot
+    show available parking spots
+    show parking full message

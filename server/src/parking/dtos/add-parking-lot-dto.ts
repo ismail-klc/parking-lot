@@ -1,4 +1,4 @@
-import { IsNotEmpty } from "class-validator";
+import { IsNotEmpty, IsNumberString } from "class-validator";
 
 export class AddParkingLotDto {
   @IsNotEmpty()
@@ -18,4 +18,7 @@ export class AddParkingLotDto {
 
   @IsNotEmpty()
   country: string;
+
+  @IsNumberString()
+  parkingRate: number;
 }
