@@ -27,11 +27,11 @@ function MainSidebar({ user }) {
             <div className="sidebar">
                 <nav className="mt-2">
                     <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <li className="nav-header ml-2">PARKING</li>
+
                         {
                             user.role === 'Admin' &&
                             <>
-                                <li className="nav-header ml-2">PARKING</li>
-
                                 <li className="nav-item has-treeview">
                                     <a href="#" className="nav-link">
                                         <i className="nav-icon fa fa-building" />
@@ -63,70 +63,81 @@ function MainSidebar({ user }) {
                                         </li>
                                     </ul>
                                 </li>
-                                <li className="nav-item has-treeview">
-                                    <a href="#" className="nav-link">
-                                        <i className="nav-icon fas fa-dungeon" />
-                                        <p>
-                                            Parking Floor
-                                            <i className="right fas fa-angle-left" />
-                                        </p>
-                                    </a>
-                                    <ul className="nav nav-treeview">
-                                        <li className="nav-item">
-                                            <Link href="/parking-floor" >
-                                                <a className="nav-link">
-                                                    <i className="nav-icon far fa-circle"></i>
-                                                    <p>
-                                                        Parking Floor
-                                                    </p>
-                                                </a>
-                                            </Link>
-                                        </li>
-                                        <li className="nav-item">
-                                            <Link href="/parking-floor/new" >
-                                                <a className="nav-link">
-                                                    <i className="nav-icon fa fa-plus"></i>
-                                                    <p>
-                                                        Add Parking Floor
-                                                    </p>
-                                                </a>
-                                            </Link>
-                                        </li>
-                                    </ul>
+                            </>
+                        }
+                        <li className="nav-item has-treeview">
+                            <a href="#" className="nav-link">
+                                <i className="nav-icon fas fa-dungeon" />
+                                <p>
+                                    Parking Floor
+                                    <i className="right fas fa-angle-left" />
+                                </p>
+                            </a>
+                            <ul className="nav nav-treeview">
+                                <li className="nav-item">
+                                    <Link href="/parking-floor" >
+                                        <a className="nav-link">
+                                            <i className="nav-icon far fa-circle"></i>
+                                            <p>
+                                                Parking Floor
+                                            </p>
+                                        </a>
+                                    </Link>
                                 </li>
-                                <li className="nav-item has-treeview">
-                                    <a href="#" className="nav-link">
-                                        <i className="nav-icon fa fa-map-marker" />
-                                        <p>
-                                            Parking Spot
-                                            <i className="right fas fa-angle-left" />
-                                        </p>
-                                    </a>
-                                    <ul className="nav nav-treeview">
-                                        <li className="nav-item">
-                                            <Link href="/parking-spot" >
-                                                <a className="nav-link">
-                                                    <i className="nav-icon far fa-circle"></i>
-                                                    <p>
-                                                        Parking Spots
-                                                    </p>
-                                                </a>
-                                            </Link>
-                                        </li>
-                                        <li className="nav-item">
-                                            <Link href="/parking-spot/new" >
-                                                <a className="nav-link">
-                                                    <i className="nav-icon fa fa-plus"></i>
-                                                    <p>
-                                                        Add Parking Spot
-                                                    </p>
-                                                </a>
-                                            </Link>
-                                        </li>
-                                    </ul>
+                                {
+                                    user.role === 'Admin' &&
+                                    <li className="nav-item">
+                                        <Link href="/parking-floor/new" >
+                                            <a className="nav-link">
+                                                <i className="nav-icon fa fa-plus"></i>
+                                                <p>
+                                                    Add Parking Floor
+                                                </p>
+                                            </a>
+                                        </Link>
+                                    </li>
+                                }
+                            </ul>
+                        </li>
+
+                        <li className="nav-item has-treeview">
+                            <a href="#" className="nav-link">
+                                <i className="nav-icon fa fa-map-marker" />
+                                <p>
+                                    Parking Spot
+                                    <i className="right fas fa-angle-left" />
+                                </p>
+                            </a>
+                            <ul className="nav nav-treeview">
+                                <li className="nav-item">
+                                    <Link href="/parking-spot" >
+                                        <a className="nav-link">
+                                            <i className="nav-icon far fa-circle"></i>
+                                            <p>
+                                                Parking Spots
+                                            </p>
+                                        </a>
+                                    </Link>
                                 </li>
+                                {
+                                    user.role === 'Admin' &&
+                                    <li className="nav-item">
+                                        <Link href="/parking-spot/new" >
+                                            <a className="nav-link">
+                                                <i className="nav-icon fa fa-plus"></i>
+                                                <p>
+                                                    Add Parking Spot
+                                                </p>
+                                            </a>
+                                        </Link>
+                                    </li>
+                                }
+                            </ul>
+                        </li>
 
-
+                        {
+                            user.role === 'Admin' &&
+                            <>
                                 <li className="nav-header">EMPLOYEE</li>
                                 <li className="nav-item has-treeview">
                                     <a href="#" className="nav-link">

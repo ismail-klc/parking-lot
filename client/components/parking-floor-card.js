@@ -1,8 +1,9 @@
+import Router from 'next/router';
 import React, { useEffect, useState } from 'react'
 import { Card } from 'react-bootstrap';
 
-function ParkingFloorCard({data}) {
-     const [freeCount, setFreeCount] = useState(0)
+function ParkingFloorCard({ data, lotid }) {
+    const [freeCount, setFreeCount] = useState(0)
 
     const getFreeCount = () => {
         let free = 0
@@ -18,10 +19,16 @@ function ParkingFloorCard({data}) {
         setFreeCount(getFreeCount())
     }, [freeCount])
 
-    return (
-        <Card bg="light" className="col-md-12">
-                <Card.Header>{data.name} </Card.Header>
+    const handleGoSpotPage = () => {
+        console.log(lotid);
+        Router.push(`/parking-spot?lotId=${lotid}&floorId=${data.id}`)
+    }
 
+    return (
+        <Card
+            onClick={handleGoSpotPage}
+            bg="light" className="col-md-12">
+            <Card.Header>{data.name} </Card.Header>
             <Card.Body>
                 <Card.Text as="div">
                     <ul>

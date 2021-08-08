@@ -4,6 +4,7 @@ import { Form, Button } from 'react-bootstrap'
 import Router, { useRouter } from 'next/router';
 import useRequest from '../../hooks/use-request';
 import ContentHeader from '../../components/content-header';
+import withAuth from '../../hocs/withAuth';
 
 const types = [
     { value: 'Car' },
@@ -84,4 +85,4 @@ function NewTicket() {
 }
 
 
-export default withAdmin(NewTicket)
+export default withAuth(NewTicket)

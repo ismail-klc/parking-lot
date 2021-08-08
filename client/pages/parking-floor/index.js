@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import withAdmin from '../../hocs/withAdmin'
+import withAuth from '../../hocs/withAuth'
 import buildClient from '../../helpers/build-client'
 import { Form } from 'react-bootstrap';
 import ParkingFloorCard from '../../components/parking-floor-card';
@@ -11,6 +11,26 @@ function ParkingFloors({ data }) {
 
     const [lotId, setLotId] = useState(query.lotId || 0)
     const [lot, setLot] = useState(null)
+    const [freeCount, setFreeCount] = useState(0)
+
+    const getFreeCount = () => {
+        let free = 0
+        for (const floor of lot.parkingFloors) {
+            for (const spot of floor.parkingSpots) {
+                if (spot.isFree) {
+                    console.log(spot);
+                    free += 1
+                }
+            }
+        }
+        return free
+    }
+
+    useEffect(() => {
+        if (lot) {
+            setFreeCount(getFreeCount())
+        }
+    }, [lot, freeCount])
 
     useEffect(() => {
         setLot(data.find(x => x.id === parseInt(lotId)))
@@ -18,7 +38,7 @@ function ParkingFloors({ data }) {
 
     return (
         <div>
-            <ContentHeader title="Parking Floor"/>
+            <ContentHeader title="Parking Floor" />
             <Form.Group className="mb-3" >
                 <Form.Label>Parking Lot</Form.Label>
                 <Form.Select
@@ -41,8 +61,14 @@ function ParkingFloors({ data }) {
                 </Form.Select>
             </Form.Group>
             {
+                lot && 
+                <div className="mb-4">
+                    <b>Free Spots Count: {freeCount} </b>
+                </div>
+            }
+            {
                 lot && lot.parkingFloors.map(p => (
-                    <ParkingFloorCard key={p.id} data={p}/>
+                    <ParkingFloorCard lotid={lotId} key={p.id} data={p} />
                 ))
             }
         </div>
@@ -61,4 +87,4 @@ export async function getServerSideProps(context) {
     }
 }
 
-export default withAdmin(ParkingFloors)
+export default withAuth(ParkingFloors)

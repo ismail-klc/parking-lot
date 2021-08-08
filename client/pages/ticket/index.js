@@ -1,4 +1,5 @@
 import React from 'react'
+import withAuth from '../../hocs/withAuth'
 
 function Tickets() {
     return (
@@ -8,4 +9,4 @@ function Tickets() {
     )
 }
 
-export default Tickets
+export default withAuth(Tickets)

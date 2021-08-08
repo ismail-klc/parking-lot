@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import withAdmin from '../../hocs/withAdmin'
+import withAuth from '../../hocs/withAuth'
 import buildClient from '../../helpers/build-client'
 import { Form, Row } from 'react-bootstrap';
 import ContentHeader from '../../components/content-header';
@@ -121,4 +121,4 @@ export async function getServerSideProps(context) {
     }
 }
 
-export default withAdmin(ParkingSpots)
+export default withAuth(ParkingSpots)
