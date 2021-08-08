@@ -16,7 +16,7 @@ function NewParkingFloor({ parkingLots }) {
         body: {
             name, lotId
         },
-        onSuccess: () => Router.push('/parking-floor')
+        onSuccess: () => Router.push(`/parking-floor?lotId=${lotId}`)
     });
 
     const handleSubmit = async (e) => {

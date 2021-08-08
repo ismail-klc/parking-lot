@@ -1,11 +1,22 @@
 import React from 'react'
 import withAdmin from '../../hocs/withAdmin'
 import buildClient from '../../helpers/build-client'
+import ContentHeader from '../../components/content-header';
+import ParkingLotCard from '../../components/parking-lot-card';
 
 function ParkingLots({ data }) {
+    
     return (
         <div>
-            { data.length }
+            <ContentHeader title="Parking Lots"/>
+            {
+                data.map(d => (
+                    <ParkingLotCard 
+                        data={d}
+                        key={d.id}
+                    />
+                ))
+            }
         </div>
     )
 }

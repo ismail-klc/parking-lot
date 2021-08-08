@@ -10,6 +10,6 @@ export class GetParkingLotsHandler implements IQueryHandler<GetParkingLotsQuery>
     const repository = getCustomRepository(ParkingLotRepository);
 
     console.log('Async GetParkingLotsQuery...');
-    return repository.find({relations: ['parkingFloors']});
+    return repository.find({ relations: ['parkingFloors', 'parkingFloors.parkingSpots'] });
   }
 }

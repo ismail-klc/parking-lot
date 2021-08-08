@@ -1,11 +1,50 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import withAdmin from '../../hocs/withAdmin'
 import buildClient from '../../helpers/build-client'
+import { Form } from 'react-bootstrap';
+import ParkingFloorCard from '../../components/parking-floor-card';
+import ContentHeader from '../../components/content-header';
+import { useRouter } from 'next/router'
 
 function ParkingFloors({ data }) {
+    const query = useRouter().query
+
+    const [lotId, setLotId] = useState(query.lotId || 0)
+    const [lot, setLot] = useState(null)
+
+    useEffect(() => {
+        setLot(data.find(x => x.id === parseInt(lotId)))
+    }, [lotId])
+
     return (
         <div>
-            { data.length }
+            <ContentHeader title="Parking Floor"/>
+            <Form.Group className="mb-3" >
+                <Form.Label>Parking Lot</Form.Label>
+                <Form.Select
+                    value={lotId}
+                    onChange={e => setLotId(e.target.value)}
+                    aria-label="Select a parking lot">
+                    <option
+                        value={0}>
+                        Select a parking lot
+                    </option>
+                    {
+                        data.map(t => (
+                            <option
+                                key={t.id}
+                                value={t.id}>
+                                {`${t.name}`}
+                            </option>
+                        ))
+                    }
+                </Form.Select>
+            </Form.Group>
+            {
+                lot && lot.parkingFloors.map(p => (
+                    <ParkingFloorCard key={p.id} data={p}/>
+                ))
+            }
         </div>
     )
 }
@@ -14,7 +53,7 @@ export async function getServerSideProps(context) {
     const client = buildClient(context);
 
     try {
-        const { data } = await client.get('/api/parking/parking-floor');
+        const { data } = await client.get('/api/parking/parking-lot');
         return { props: { data } };
 
     } catch (error) {
