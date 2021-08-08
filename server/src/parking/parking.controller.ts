@@ -1,5 +1,6 @@
-import { Body, Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, ParseIntPipe, Post, UseGuards } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
+import { AdminGuard } from 'src/auth/guards/admin.guard';
 import { AddParkingFloorCommand } from './commands/impl/add-parking-floor.command';
 import { AddParkingLotCommand } from './commands/impl/add-parking-lot.command';
 import { AddParkingSpotCommand } from './commands/impl/add-parking-spot.command';
@@ -21,6 +22,7 @@ export class ParkingController {
 
     // parking lot
     @Post('parking-lot')
+    @UseGuards(AdminGuard)
     async addParkingLot(@Body() dto: AddParkingLotDto) {
         return this.commandBus.execute(new AddParkingLotCommand(dto));
     }
@@ -38,6 +40,7 @@ export class ParkingController {
     // parking floor
     /////////////////////////////////////////////////////////////////////
     @Post('parking-floor')
+    @UseGuards(AdminGuard)
     async addParkingFloor(@Body() dto: AddParkingFloorDto) {
         return this.commandBus.execute(new AddParkingFloorCommand(dto));
     }
@@ -55,6 +58,7 @@ export class ParkingController {
     // parking spot
     /////////////////////////////////////////////////////////////////////
     @Post('parking-spot')
+    @UseGuards(AdminGuard)
     async addParkingSpot(@Body() dto: AddParkingSpotDto) {
         return this.commandBus.execute(new AddParkingSpotCommand(dto));
     }
