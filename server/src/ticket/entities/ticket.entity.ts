@@ -24,6 +24,6 @@ export class ParkingTicket {
     @Column({ default: ParkingTicketStatus.Active })
     status: ParkingTicketStatus;
 
-    @OneToMany(type => Vehicle, type => type.parkingTickets)
+    @ManyToOne(type => Vehicle, type => type.parkingTickets)
     vehicle: Vehicle;
 }

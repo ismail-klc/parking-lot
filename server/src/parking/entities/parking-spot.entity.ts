@@ -18,7 +18,7 @@ export class ParkingSpot {
     @Column()
     number: string;
 
-    @Column()
+    @Column({ default: true })
     isFree: boolean;
 
     @OneToOne(() => Vehicle, { nullable: true })

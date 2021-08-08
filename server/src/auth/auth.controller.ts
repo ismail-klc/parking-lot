@@ -25,7 +25,7 @@ export class AuthController {
     }
 
     @Post('signin')
-    @HttpCode(201)
+    @HttpCode(200)
     async signIn(@Body() dto: SignInDto, @Res({ passthrough: true }) res: Response) {
         const token = await this.commandBus.execute(new SignInCommand(dto));
         res.cookie('token', token, { httpOnly: true });

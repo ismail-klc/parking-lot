@@ -45,7 +45,7 @@ export class CreateTicketHandler implements ICommandHandler<CreateTicketCommand>
     // then create a ticket
     const date = new Date().toString();
     return this.ticketRepository.save({
-        vehicle, issuedAt: date
+        vehicle: vehicle, issuedAt: date
     })
   }
 }
