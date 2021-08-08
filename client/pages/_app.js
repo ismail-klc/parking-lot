@@ -13,10 +13,10 @@ function MyApp({ Component, pageProps, user }) {
         user
           ?
           <LayoutAuth user={user}>
-            <Component {...pageProps} />
+            <Component user={user} {...pageProps} />
           </LayoutAuth>
           :
-          <Component {...pageProps} />
+          <Component user={user} {...pageProps} />
       }
       <Script key="1" strategy="beforeInteractive" src="/js/jquery.min.js" />
       <Script key="2" strategy="beforeInteractive" src="/js/adminlte.min.js" />

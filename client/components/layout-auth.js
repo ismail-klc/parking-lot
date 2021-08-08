@@ -10,10 +10,13 @@ function LayoutAuth({ children, user }) {
                 <Navbar />
                 <MainSidebar user={user} />
                 <div className="content-wrapper pb-5">
-                    {children}
+                    <section className="content">
+                        <div className="container-fluid">
+                            {children}
+                        </div>
+                    </section>
                 </div>
                 <Footer />
-
             </div>
         </>
     )

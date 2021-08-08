@@ -20,11 +20,9 @@ function Signout() {
             <Head>
                 <title>Signing out</title>
             </Head>
-            <section className="content">
-                <div className="container-fluid text-center mt-5">
-                    Signing you out ...
-                </div>
-            </section>
+            <div className="text-center pt-5">
+                Signing you out ...
+            </div>
         </>
     )
 }

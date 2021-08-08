@@ -39,12 +39,6 @@ function Navbar() {
 
       <ul className="navbar-nav ml-auto">
         <li className="nav-item d-none d-sm-inline-block">
-          <Link href="/auth/change-password" >
-            <a
-              className={`nav-link`} >Change Password</a>
-          </Link>
-        </li>
-        <li className="nav-item d-none d-sm-inline-block">
           <Link href="/auth/signout" >
             <a
               className={`nav-link`} >Sign Out</a>
