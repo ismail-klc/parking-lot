@@ -8,6 +8,7 @@ import { Response, Request } from 'express';
 import { GetUserQuery } from './queries/impl/get-user.query';
 import { AdminGuard } from './guards/admin.guard';
 import { AuthGuard } from './guards/auth.guard';
+import { GetUsersQuery } from './queries/impl/get-users.query';
 
 @Controller('auth')
 @UseInterceptors(ClassSerializerInterceptor)
@@ -53,5 +54,12 @@ export class AuthController {
         const token = req.cookies.token;
 
         return this.queryBus.execute(new GetUserQuery(token));
+    }
+
+    @UseGuards(AuthGuard)
+    @Get('users')
+    @HttpCode(200)
+    getUsers(@Req() req: Request) {
+        return this.queryBus.execute(new GetUsersQuery());
     }
 }
