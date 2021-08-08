@@ -19,6 +19,7 @@ import { ParkingLotRepository } from './repositories/parking-lot.repository';
         ParkingLotRepository,
         ...CommandHandlers,
         ...QueryHandlers
-    ]
+    ],
+    exports: [TypeOrmModule]
 })
 export class ParkingModule { }

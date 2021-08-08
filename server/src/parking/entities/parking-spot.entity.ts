@@ -1,7 +1,8 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { Vehicle } from 'src/ticket/entities/vehicle.entity';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToOne, JoinColumn } from 'typeorm';
 import { ParkingFloor } from './parking-floor.entity';
 
-export enum ParkingSpotType{
+export enum ParkingSpotType {
     HandicappedSpot = 'HandicappedSpot',
     CompactSpot = 'CompactSpot',
     LargeSpot = 'LargeSpot',
@@ -19,6 +20,10 @@ export class ParkingSpot {
 
     @Column()
     isFree: boolean;
+
+    @OneToOne(() => Vehicle, { nullable: true })
+    @JoinColumn()
+    vehicle: Vehicle;
 
     @Column()
     type: ParkingSpotType;
