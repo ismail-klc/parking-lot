@@ -7,7 +7,7 @@ function MainSidebar({ user }) {
             <Link href="/">
                 <a className="brand-link">
                     <span className="brand-text font-weight-light ml-4">
-                        <b>LMS</b>
+                        <b>Parking Lot</b>
                     </span>
                 </a>
             </Link>
@@ -34,7 +34,7 @@ function MainSidebar({ user }) {
 
                                 <li className="nav-item has-treeview">
                                     <a href="#" className="nav-link">
-                                        <i className="nav-icon fas fa-chart-pie" />
+                                        <i className="nav-icon fa fa-building" />
                                         <p>
                                             Parking Lot
                                             <i className="right fas fa-angle-left" />
@@ -54,7 +54,7 @@ function MainSidebar({ user }) {
                                         <li className="nav-item">
                                             <Link href="/parking-lot/new" >
                                                 <a className="nav-link">
-                                                    <i className="nav-icon far fa-circle"></i>
+                                                    <i className="nav-icon fa fa-plus"></i>
                                                     <p>
                                                         Add Parking Lot
                                                     </p>
@@ -65,7 +65,7 @@ function MainSidebar({ user }) {
                                 </li>
                                 <li className="nav-item has-treeview">
                                     <a href="#" className="nav-link">
-                                        <i className="nav-icon fas fa-chart-pie" />
+                                        <i className="nav-icon fas fa-dungeon" />
                                         <p>
                                             Parking Floor
                                             <i className="right fas fa-angle-left" />
@@ -85,7 +85,7 @@ function MainSidebar({ user }) {
                                         <li className="nav-item">
                                             <Link href="/parking-floor/new" >
                                                 <a className="nav-link">
-                                                    <i className="nav-icon far fa-circle"></i>
+                                                    <i className="nav-icon fa fa-plus"></i>
                                                     <p>
                                                         Add Parking Floor
                                                     </p>
@@ -96,7 +96,7 @@ function MainSidebar({ user }) {
                                 </li>
                                 <li className="nav-item has-treeview">
                                     <a href="#" className="nav-link">
-                                        <i className="nav-icon fas fa-chart-pie" />
+                                        <i className="nav-icon fa fa-map-marker" />
                                         <p>
                                             Parking Spot
                                             <i className="right fas fa-angle-left" />
@@ -116,7 +116,7 @@ function MainSidebar({ user }) {
                                         <li className="nav-item">
                                             <Link href="/parking-spot/new" >
                                                 <a className="nav-link">
-                                                    <i className="nav-icon far fa-circle"></i>
+                                                    <i className="nav-icon fa fa-plus"></i>
                                                     <p>
                                                         Add Parking Spot
                                                     </p>
@@ -130,7 +130,7 @@ function MainSidebar({ user }) {
                                 <li className="nav-header">EMPLOYEE</li>
                                 <li className="nav-item has-treeview">
                                     <a href="#" className="nav-link">
-                                        <i className="nav-icon fas fa-chart-pie" />
+                                        <i className="nav-icon fa fa-user" />
                                         <p>
                                             Employee
                                             <i className="right fas fa-angle-left" />
@@ -140,7 +140,7 @@ function MainSidebar({ user }) {
                                         <li className="nav-item">
                                             <Link href="/employees" >
                                                 <a className="nav-link">
-                                                    <i className="nav-icon far fa-circle"></i>
+                                                    <i className="nav-icon fa fa-users"></i>
                                                     <p>
                                                         Employees
                                                     </p>
@@ -150,7 +150,7 @@ function MainSidebar({ user }) {
                                         <li className="nav-item">
                                             <Link href="/employees/new" >
                                                 <a className="nav-link">
-                                                    <i className="nav-icon far fa-circle"></i>
+                                                    <i className="nav-icon fa fa-plus"></i>
                                                     <p>
                                                         Add New Employee
                                                     </p>
@@ -162,7 +162,37 @@ function MainSidebar({ user }) {
                             </>
                         }
 
-
+                        <li className="nav-header">PANELS</li>
+                        <li className="nav-item">
+                            <Link href="/ticket/new" >
+                                <a className="nav-link">
+                                    <i className="nav-icon fa fa-plus"></i>
+                                    <p>
+                                        Enter Panel
+                                    </p>
+                                </a>
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link href="/ticket/exit" >
+                                <a className="nav-link">
+                                    <i className="nav-icon far fa-window-close"></i>
+                                    <p>
+                                        Exit Panel
+                                    </p>
+                                </a>
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link href="/ticket" >
+                                <a className="nav-link">
+                                    <i className="nav-icon fas fa-info"></i>
+                                    <p>
+                                        Active Tickets
+                                    </p>
+                                </a>
+                            </Link>
+                        </li>
                     </ul>
                 </nav>
             </div>

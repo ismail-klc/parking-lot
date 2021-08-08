@@ -13,6 +13,23 @@ function ParkingSpots({ data }) {
     const [lot, setLot] = useState(null)
     const [floorId, setFloorId] = useState(query.floorId || 0)
     const [floor, setFloor] = useState(null)
+    const [freeCount, setFreeCount] = useState(0)
+
+    const getFreeCount = () => {
+        let free = 0
+        for (const spot of floor.parkingSpots) {
+            if (spot.isFree) {
+                free += 1
+            }
+        }
+        return free
+    }
+
+    useEffect(() => {
+        if (floor) {
+            setFreeCount(getFreeCount())
+        }
+    }, [floor, freeCount])
 
 
     useEffect(() => {
@@ -74,9 +91,12 @@ function ParkingSpots({ data }) {
                 </Form.Group>
 
             }
-            <b>
-                Free Spot Count:
-            </b>
+            {
+                floor &&
+                <b>
+                    Free Spot Count: {freeCount}
+                </b>
+            }
             <Row className="mt-3">
                 {
                     lot && floor &&

@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToOne } from 'typeorm';
 import { ParkingTicket } from './ticket.entity';
 
-export enum VehicleType{
+export enum VehicleType {
     Car = 'Car',
     Truck = 'Truck',
     Electric = 'Electric',
@@ -14,7 +14,7 @@ export class Vehicle {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
+    @Column({ unique: true })
     licenseNumber: string;
 
     @Column()

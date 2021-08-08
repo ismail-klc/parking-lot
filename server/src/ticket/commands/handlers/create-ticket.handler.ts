@@ -22,8 +22,11 @@ export class CreateTicketHandler implements ICommandHandler<CreateTicketCommand>
     // find the parking spot and
     // check if it is free or exists
     const spot = await this.spotRepository.findOne(command.dto.spotId);
-    if (!spot || !spot.isFree) {
-        throw new BadRequestException(["Spot not found or not free"]);
+    if (!spot) {
+        throw new BadRequestException(["Spot not found"]);
+    }
+    if (!spot.isFree) {
+        throw new BadRequestException(["Spot not free"]);
     }
 
     // find the vehicle
@@ -34,6 +37,12 @@ export class CreateTicketHandler implements ICommandHandler<CreateTicketCommand>
             ...command.dto
         });
     }
+
+    // is the vehicle already in a parking spot
+    const isVehicleExist = await this.spotRepository.findOne({ vehicle: vehicle });
+    if (isVehicleExist) {
+        throw new BadRequestException(["This vehicle is already in a parking spot"]);
+    } 
 
     // update the parking spot
     spot.isFree = false;
