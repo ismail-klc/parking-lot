@@ -14,7 +14,9 @@ function Signin() {
         body: {
             email, password
         },
-        onSuccess: () => Router.push('/')
+        onSuccess: () => {
+            Router.push('/')
+        }
     });
 
     const handleSubmit = async (e) => {

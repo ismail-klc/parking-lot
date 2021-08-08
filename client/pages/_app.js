@@ -6,17 +6,14 @@ import buildClient from '../helpers/build-client'
 import Script from 'next/script'
 import LayoutAuth from '../components/layout-auth';
 
+
 function MyApp({ Component, pageProps, user }) {
   return (
     <>
       {
-        user
-          ?
-          <LayoutAuth user={user}>
-            <Component user={user} {...pageProps} />
-          </LayoutAuth>
-          :
+        <LayoutAuth user={user}>
           <Component user={user} {...pageProps} />
+        </LayoutAuth>
       }
       <Script key="1" strategy="beforeInteractive" src="/js/jquery.min.js" />
       <Script key="2" strategy="beforeInteractive" src="/js/adminlte.min.js" />
