@@ -1,3 +1,4 @@
+import { ParkingLot } from 'src/parking/entities/parking-lot.entity';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToOne } from 'typeorm';
 import { Vehicle } from './vehicle.entity';
 
@@ -23,6 +24,9 @@ export class ParkingTicket {
 
     @Column({ default: ParkingTicketStatus.Active })
     status: ParkingTicketStatus;
+
+    @ManyToOne(type => ParkingLot, type => type.parkingTickets)
+    parkingLot: ParkingLot;
 
     @ManyToOne(type => Vehicle, type => type.parkingTickets)
     vehicle: Vehicle;

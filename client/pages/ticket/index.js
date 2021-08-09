@@ -36,7 +36,9 @@ const columns = [
     },
     {
         name: 'Action',
-        selector: row => <Button className="btn-sm m-1" variant="outline-primary">Payment</Button>
+        selector: row => <Button
+        onClick={() => Router.push(`/ticket/exit?ticketId=${row.id}`)}
+        className="btn-sm m-1" variant="outline-primary">Payment</Button>
     },
 
 ];

@@ -1,3 +1,4 @@
+import { ParkingTicket } from 'src/ticket/entities/ticket.entity';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { ParkingFloor } from './parking-floor.entity';
 
@@ -29,4 +30,7 @@ export class ParkingLot {
 
     @OneToMany(type => ParkingFloor, type => type.lot)
     parkingFloors: ParkingFloor[];
+
+    @OneToMany(type => ParkingTicket, type => type.parkingLot)
+    parkingTickets: ParkingTicket[];
 }

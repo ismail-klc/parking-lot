@@ -1,6 +1,8 @@
 import { BadRequestException } from '@nestjs/common';
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { InjectRepository } from '@nestjs/typeorm';
+import { ParkingFloor } from 'src/parking/entities/parking-floor.entity';
+import { ParkingLot } from 'src/parking/entities/parking-lot.entity';
 import { ParkingSpot } from 'src/parking/entities/parking-spot.entity';
 import { ParkingTicket } from 'src/ticket/entities/ticket.entity';
 import { Vehicle } from 'src/ticket/entities/vehicle.entity';
@@ -16,6 +18,10 @@ export class CreateTicketHandler implements ICommandHandler<CreateTicketCommand>
         private ticketRepository: Repository<ParkingTicket>,
         @InjectRepository(ParkingSpot)
         private spotRepository: Repository<ParkingSpot>,
+        @InjectRepository(ParkingFloor)
+        private floorRepository: Repository<ParkingFloor>,
+        @InjectRepository(ParkingLot)
+        private lotRepository: Repository<ParkingLot>,
       ) { }
 
   async execute(command: CreateTicketCommand) {
@@ -27,6 +33,15 @@ export class CreateTicketHandler implements ICommandHandler<CreateTicketCommand>
     }
     if (!spot.isFree) {
         throw new BadRequestException(["Spot not free"]);
+    }
+
+    const floor = await this.floorRepository.findOne(spot.floor);
+    if (!floor) {
+        throw new BadRequestException(["Floor not found"]);
+    }
+    const lot = await this.lotRepository.findOne(floor.lot);
+    if (!lot) {
+        throw new BadRequestException(["Lot not found"]);
     }
 
     // find the vehicle
@@ -54,7 +69,7 @@ export class CreateTicketHandler implements ICommandHandler<CreateTicketCommand>
     // then create a ticket
     const date = new Date().toString();
     return this.ticketRepository.save({
-        vehicle: vehicle, issuedAt: date
+        vehicle: vehicle, issuedAt: date, parkingLot: lot
     })
   }
 }

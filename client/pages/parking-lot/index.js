@@ -10,7 +10,7 @@ function ParkingLots({ data }) {
         <div>
             <ContentHeader title="Parking Lots"/>
             {
-                data.map(d => (
+                data && data.map(d => (
                     <ParkingLotCard 
                         data={d}
                         key={d.id}
