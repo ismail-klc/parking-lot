@@ -5,6 +5,7 @@ import { ParkingModule } from 'src/parking/parking.module';
 import { CommandHandlers } from './commands/handlers';
 import { ParkingTicket } from './entities/ticket.entity';
 import { Vehicle } from './entities/vehicle.entity';
+import { QueryHandlers } from './queries/handler';
 import { TicketController } from './ticket.controller';
 
 @Module({
@@ -15,7 +16,8 @@ import { TicketController } from './ticket.controller';
   ],
   controllers: [TicketController],
   providers: [
-    ...CommandHandlers
+    ...CommandHandlers,
+    ...QueryHandlers
   ]
 })
 export class TicketModule {}

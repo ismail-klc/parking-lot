@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import withAdmin from '../../hocs/withAdmin'
 import { Form, Button } from 'react-bootstrap'
 import Router, { useRouter } from 'next/router';
 import useRequest from '../../hooks/use-request';

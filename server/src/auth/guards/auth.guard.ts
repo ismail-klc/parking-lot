@@ -19,7 +19,7 @@ export class AuthGuard implements CanActivate {
         try {
             await this.jwtService.verifyAsync(token);
         } catch (error) {
-            throw new UnauthorizedException("You are not admin");
+            throw new UnauthorizedException("You are not authorized");
         }
 
         return true;
