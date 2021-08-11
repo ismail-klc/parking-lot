@@ -4,6 +4,7 @@ import { GetOneParkingSpotHandler } from "./get-one-parking-spot.handler";
 import { GetParkingFloorssHandler } from "./get-parking-floors.handler";
 import { GetParkingLotsHandler } from "./get-parking-lots.handler";
 import { GetParkingSpotssHandler } from "./get-parking-spots.handler";
+import { GetStatisticsHandler } from "./get-statistics.handler";
 
 export const QueryHandlers = [
     GetParkingLotsHandler, 
@@ -11,5 +12,6 @@ export const QueryHandlers = [
     GetParkingFloorssHandler,
     GetOneParkingLotHandler,
     GetOneParkingFloorHandler,
-    GetOneParkingSpotHandler
-];
+    GetOneParkingSpotHandler,
+    GetStatisticsHandler
+]

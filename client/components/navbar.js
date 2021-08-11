@@ -25,7 +25,7 @@ function Navbar() {
         </li>
       </ul>
 
-      <form className="form-inline ml-3">
+      {/* <form className="form-inline ml-3">
         <div className="input-group input-group-sm">
           <input
             className="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search" />
@@ -35,7 +35,7 @@ function Navbar() {
             </button>
           </div>
         </div>
-      </form>
+      </form> */}
 
       <ul className="navbar-nav ml-auto">
         <li className="nav-item d-none d-sm-inline-block">

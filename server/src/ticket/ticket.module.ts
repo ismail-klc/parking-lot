@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { forwardRef, Module } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ParkingModule } from 'src/parking/parking.module';
@@ -10,7 +10,7 @@ import { TicketController } from './ticket.controller';
 
 @Module({
   imports: [
-    ParkingModule,
+    forwardRef(() => ParkingModule),
     CqrsModule,
     TypeOrmModule.forFeature([Vehicle, ParkingTicket])
   ],

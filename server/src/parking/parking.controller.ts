@@ -12,7 +12,7 @@ import { UpdateParkingLotDto } from './dtos/update-parking-lot.dto';
 import {
     GetOneParkingFloorQuery, GetOneParkingLotQuery,
     GetOneParkingSpotQuery, GetParkingFloorsQuery,
-    GetParkingLotsQuery, GetParkingSpotsQuery
+    GetParkingLotsQuery, GetParkingSpotsQuery, GetStatisticsQuery
 } from './queries/impl';
 
 @Controller('parking')
@@ -21,6 +21,11 @@ export class ParkingController {
         private readonly commandBus: CommandBus,
         private readonly queryBus: QueryBus,
     ) { }
+
+    @Get('statistics')
+    async getParkingStatistics() {
+        return this.queryBus.execute(new GetStatisticsQuery());
+    }
 
     // parking lot
     @Post('parking-lot')
