@@ -1,10 +1,10 @@
 import { BadRequestException } from '@nestjs/common';
-import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
+import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ParkingFloor } from 'src/parking/entities/parking-floor.entity';
 import { ParkingLot } from 'src/parking/entities/parking-lot.entity';
 import { ParkingSpot } from 'src/parking/entities/parking-spot.entity';
-import { Payment } from 'src/payment/entities/payment.entity';
+import { Payment, PaymentType } from 'src/payment/entities/payment.entity';
 import { ParkingTicket, ParkingTicketStatus } from 'src/ticket/entities/ticket.entity';
 import { Vehicle } from 'src/ticket/entities/vehicle.entity';
 import { Repository } from 'typeorm';
@@ -25,6 +25,7 @@ export class CreatePaymentHandler implements ICommandHandler<CreatePaymentComman
         private lotRepository: Repository<ParkingLot>,
         @InjectRepository(Payment)
         private paymentRepository: Repository<Payment>,
+        private readonly publisher: EventPublisher,
     ) { }
 
     async execute(command: CreatePaymentCommand) {
@@ -61,12 +62,27 @@ export class CreatePaymentHandler implements ICommandHandler<CreatePaymentComman
 
         }
 
+        console.log("paymentcreatedcommand working");
 
+        
+        
 
-        return this.paymentRepository.save({
+        const payment = await this.paymentRepository.save({
             amount: command.dto.amount,
             creationDate: command.dto.creationDate,
-            ticket
+            ticket,
+            paymentType: command.dto.type
         });
+
+        if (command.dto.type === PaymentType.CreditCard) {
+            // send event 
+            const pay = this.publisher.mergeObjectContext(
+                await this.paymentRepository.findOne(+payment.id),
+              );
+            pay.creditCardPayment();
+            pay.commit();
+        }
+
+        return payment;
     }
 }

@@ -1,4 +1,5 @@
-import { IsNotEmpty, IsNumber, IsNumberString } from "class-validator";
+import { IsEnum, IsNotEmpty, IsNumber, IsNumberString } from "class-validator";
+import { PaymentType } from "../entities/payment.entity";
 
 export class CreatePaymentDto {
     @IsNotEmpty()
@@ -9,4 +10,7 @@ export class CreatePaymentDto {
 
     @IsNumber()
     ticketId: number;
+
+    @IsEnum(PaymentType)
+    type: PaymentType;
 }

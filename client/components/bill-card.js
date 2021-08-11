@@ -1,17 +1,24 @@
 import { DateTime } from 'luxon';
 import Router from 'next/router';
-import React from 'react'
-import { Button, Card } from 'react-bootstrap';
+import React, { useState } from 'react'
+import { Button, Card, Form } from 'react-bootstrap';
 import useRequest from '../hooks/use-request';
 
+const types = [
+    { value: 'Cash' },
+    { value: 'CreditCard' }
+]
+
 function BillCard({ data }) {
+    const [type, setType] = useState(0)
     const { doRequest, errors } = useRequest({
         url: '/api/payment',
         method: 'post',
         body: {
             creationDate: data.payedAt,
             amount: data.payedAmount,
-            ticketId: data.id
+            ticketId: data.id,
+            type
         },
         onSuccess: () => Router.push(`/ticket`)
     });
@@ -41,6 +48,27 @@ function BillCard({ data }) {
                         <div>
                             Total Price: {data.payedAmount}$
                         </div>
+                        <Form.Group className="mb-3" >
+                            <Form.Label>Payment Type</Form.Label>
+                            <Form.Select
+                                value={type}
+                                onChange={e => setType(e.target.value)}
+                                aria-label="Select a payment type">
+                                <option
+                                    value={0}>
+                                    Select a payment type
+                                </option>
+                                {
+                                    types.map(t => (
+                                        <option
+                                            key={t.value}
+                                            value={t.value}>
+                                            {`${t.value}`}
+                                        </option>
+                                    ))
+                                }
+                            </Form.Select>
+                        </Form.Group>
                         {
                             errors && errors
                         }
