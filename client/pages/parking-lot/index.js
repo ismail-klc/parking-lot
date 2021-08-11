@@ -3,15 +3,19 @@ import withAdmin from '../../hocs/withAdmin'
 import buildClient from '../../helpers/build-client'
 import ContentHeader from '../../components/content-header';
 import ParkingLotCard from '../../components/parking-lot-card';
+import Head from 'next/head';
 
 function ParkingLots({ data }) {
-    
+
     return (
         <div>
-            <ContentHeader title="Parking Lots"/>
+            <Head>
+                <title>Parking Lots</title>
+            </Head>
+            <ContentHeader title="Parking Lots" />
             {
                 data && data.map(d => (
-                    <ParkingLotCard 
+                    <ParkingLotCard
                         data={d}
                         key={d.id}
                     />

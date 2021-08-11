@@ -4,6 +4,7 @@ import Router, { useRouter } from 'next/router';
 import useRequest from '../../hooks/use-request';
 import ContentHeader from '../../components/content-header';
 import withAuth from '../../hocs/withAuth';
+import Head from 'next/head';
 
 const types = [
     { value: 'Car' },
@@ -37,6 +38,9 @@ function NewTicket() {
 
     return (
         <div>
+            <Head>
+                <title>Create Ticket</title>
+            </Head>
             <ContentHeader title="Create New Ticket" />
             <Form className="col-sm-6 mx-auto" onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" >

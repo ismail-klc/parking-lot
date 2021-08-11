@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import React from 'react'
 import { Row } from 'react-bootstrap';
 import ContentHeader from '../../components/content-header';
@@ -8,7 +9,10 @@ import withAdmin from '../../hocs/withAdmin';
 function Employees({ data }) {
     return (
         <div>
-            <ContentHeader title="Employees"/>
+            <Head>
+                <title>Employees</title>
+            </Head>
+            <ContentHeader title="Employees" />
             <Row className="mx-auo">
                 {
                     data.map(d => (

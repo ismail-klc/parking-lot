@@ -5,6 +5,7 @@ import Router from 'next/router';
 import useRequest from '../../hooks/use-request';
 import ContentHeader from '../../components/content-header';
 import buildClient from '../../helpers/build-client'
+import Head from 'next/head';
 
 const types = [
     { value: 'Admin' },
@@ -34,6 +35,9 @@ function NewEmployee({ parkingLots }) {
 
     return (
         <div>
+            <Head>
+                <title>New Employee</title>
+            </Head>
             <ContentHeader title="Add New Employee" />
             <Form className="col-sm-6 mx-auto" onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" >

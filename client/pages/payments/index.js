@@ -1,4 +1,5 @@
 import { DateTime } from 'luxon';
+import Head from 'next/head';
 import React from 'react'
 import { Button } from 'react-bootstrap';
 import CompletePaymentBtn from '../../components/complete-payment-btn';
@@ -36,18 +37,20 @@ const columns = [
     },
     {
         name: 'Action',
-        selector: row => row.status === 'Created' &&  
+        selector: row => row.status === 'Created' &&
             <CompletePaymentBtn id={row.id} />
     },
 
 ];
 
 function Payments({ data }) {
-    console.log(data);
     if (typeof window !== 'undefined') {
 
         return (
             <>
+                <Head>
+                    <title>Payments</title>
+                </Head>
                 <ContentHeader title="Payments" />
                 <MyDataTable
                     filteredCol1="status"

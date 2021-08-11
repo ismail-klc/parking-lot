@@ -4,6 +4,7 @@ import { Form, Button } from 'react-bootstrap'
 import Router from 'next/router';
 import useRequest from '../../hooks/use-request';
 import ContentHeader from '../../components/content-header';
+import Head from 'next/head';
 
 function NewParkingLot() {
     const [name, setName] = useState('')
@@ -31,6 +32,9 @@ function NewParkingLot() {
 
     return (
         <div>
+            <Head>
+                <title>New Parking Lot</title>
+            </Head>
             <ContentHeader title="Add Parking Lot" />
             <Form className="col-sm-6 mx-auto" onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" >

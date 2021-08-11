@@ -5,6 +5,7 @@ import { Form, Row } from 'react-bootstrap';
 import ContentHeader from '../../components/content-header';
 import ParkingSpotCard from '../../components/parking-spot-card';
 import { useRouter } from 'next/router'
+import Head from 'next/head';
 
 function ParkingSpots({ data }) {
     const query = useRouter().query
@@ -44,6 +45,9 @@ function ParkingSpots({ data }) {
 
     return (
         <div>
+            <Head>
+                <title>Parking Spots</title>
+            </Head>
             <ContentHeader title="Parking Spots" />
             <Form.Group className="mb-3" >
                 <Form.Label>Parking Lot</Form.Label>

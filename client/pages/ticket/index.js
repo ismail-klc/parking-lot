@@ -6,6 +6,7 @@ import ContentHeader from '../../components/content-header';
 import Router from 'next/router';
 import { DateTime } from "luxon";
 import { Button } from 'react-bootstrap';
+import Head from 'next/head';
 
 const columns = [
     {
@@ -37,8 +38,8 @@ const columns = [
     {
         name: 'Action',
         selector: row => <Button
-        onClick={() => Router.push(`/ticket/exit?ticketId=${row.id}`)}
-        className="btn-sm m-1" variant="outline-primary">Payment</Button>
+            onClick={() => Router.push(`/ticket/exit?ticketId=${row.id}`)}
+            className="btn-sm m-1" variant="outline-primary">Payment</Button>
     },
 
 ];
@@ -48,6 +49,9 @@ function Tickets({ data }) {
 
         return (
             <>
+                <Head>
+                    <title>Active Tickets</title>
+                </Head>
                 <ContentHeader title="Active Tickets" />
                 <MyDataTable
                     columns={columns}

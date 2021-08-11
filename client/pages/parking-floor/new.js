@@ -5,6 +5,7 @@ import Router from 'next/router';
 import useRequest from '../../hooks/use-request';
 import ContentHeader from '../../components/content-header';
 import buildClient from '../../helpers/build-client'
+import Head from 'next/head';
 
 function NewParkingFloor({ parkingLots }) {
     const [name, setName] = useState('')
@@ -27,6 +28,9 @@ function NewParkingFloor({ parkingLots }) {
 
     return (
         <div>
+            <Head>
+                <title>New Parking Floor</title>
+            </Head>
             <ContentHeader title="Add Parking Floor" />
             <Form className="col-sm-6 mx-auto" onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" >

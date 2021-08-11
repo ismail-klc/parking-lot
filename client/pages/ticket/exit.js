@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import BillCard from '../../components/bill-card';
 import useRequest from '../../hooks/use-request';
+import Head from 'next/head';
 
 const useMountEffect = (fun) => useEffect(fun, [])
 
@@ -14,7 +15,7 @@ function Payment() {
     const [ticketId, setTicketId] = useState(query.ticketId || 0)
     const [ticket, setTicket] = useState(null)
     const [notFound, setNotFound] = useState(false)
-    
+
 
     const handleSubmit = async (e) => {
         if (e) {
@@ -41,6 +42,9 @@ function Payment() {
 
     return (
         <div>
+            <Head>
+                <title>Exit Panel</title>
+            </Head>
             <ContentHeader title="Payment Process" />
             <Form className="col-sm-6 mx-auto" onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" >
@@ -55,7 +59,7 @@ function Payment() {
             </Form>
             {
                 ticket &&
-                <BillCard data={ticket}/> 
+                <BillCard data={ticket} />
             }
             {
                 notFound &&

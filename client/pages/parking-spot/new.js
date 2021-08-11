@@ -5,6 +5,7 @@ import Router from 'next/router';
 import useRequest from '../../hooks/use-request';
 import ContentHeader from '../../components/content-header';
 import buildClient from '../../helpers/build-client'
+import Head from 'next/head';
 
 const types = [
     { value: 'HandicappedSpot' },
@@ -42,6 +43,9 @@ function NewParkingSpot({ parkingLots }) {
 
     return (
         <div>
+            <Head>
+                <title>New Parking Spot</title>
+            </Head>
             <ContentHeader title="Add Parking Spot" />
             <Form className="col-sm-6 mx-auto" onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" >

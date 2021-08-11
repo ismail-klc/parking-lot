@@ -5,6 +5,7 @@ import { Form } from 'react-bootstrap';
 import ParkingFloorCard from '../../components/parking-floor-card';
 import ContentHeader from '../../components/content-header';
 import { useRouter } from 'next/router'
+import Head from 'next/head';
 
 function ParkingFloors({ data }) {
     const query = useRouter().query
@@ -38,6 +39,9 @@ function ParkingFloors({ data }) {
 
     return (
         <div>
+            <Head>
+                <title>Parking Floors</title>
+            </Head>
             <ContentHeader title="Parking Floor" />
             <Form.Group className="mb-3" >
                 <Form.Label>Parking Lot</Form.Label>
@@ -61,7 +65,7 @@ function ParkingFloors({ data }) {
                 </Form.Select>
             </Form.Group>
             {
-                lot && 
+                lot &&
                 <div className="mb-4">
                     <b>Free Spots Count: {freeCount} </b>
                 </div>
