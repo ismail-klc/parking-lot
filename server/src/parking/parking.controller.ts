@@ -1,12 +1,14 @@
-import { Body, Controller, Get, Param, ParseIntPipe, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, ParseIntPipe, Post, Put, UseGuards } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { AdminGuard } from 'src/auth/guards/admin.guard';
 import { AddParkingFloorCommand } from './commands/impl/add-parking-floor.command';
 import { AddParkingLotCommand } from './commands/impl/add-parking-lot.command';
 import { AddParkingSpotCommand } from './commands/impl/add-parking-spot.command';
+import { UpdateParkingLotCommand } from './commands/impl/update-parking-lot.command';
 import { AddParkingFloorDto } from './dtos/add-parking-floor.dto';
 import { AddParkingLotDto } from './dtos/add-parking-lot-dto';
 import { AddParkingSpotDto } from './dtos/add-parking-spot.dto';
+import { UpdateParkingLotDto } from './dtos/update-parking-lot.dto';
 import {
     GetOneParkingFloorQuery, GetOneParkingLotQuery,
     GetOneParkingSpotQuery, GetParkingFloorsQuery,
@@ -35,6 +37,12 @@ export class ParkingController {
     @Get('parking-lot/:id')
     async getParkingLot(@Param('id', ParseIntPipe) id: number) {
         return this.queryBus.execute(new GetOneParkingLotQuery(id));
+    }
+
+    @Put('parking-lot')
+    @UseGuards(AdminGuard)
+    async updateParkingLot(@Body() dto: UpdateParkingLotDto) {
+        return this.commandBus.execute(new UpdateParkingLotCommand(dto));
     }
 
     // parking floor

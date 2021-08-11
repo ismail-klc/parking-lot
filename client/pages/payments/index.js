@@ -22,7 +22,7 @@ const columns = [
 
     {
         name: 'Amount',
-        selector: row => row.amount,
+        selector: row => `${row.amount}$`,
         sortable: true,
     },
     {

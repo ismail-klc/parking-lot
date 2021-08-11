@@ -1,7 +1,8 @@
+import Router from 'next/router';
 import React, { useEffect, useState } from 'react'
-import { Card } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 
-function ParkingLotCard({data}) {
+function ParkingLotCard({ data }) {
     const [capacity, setCapacity] = useState(0)
 
     const getCapacity = () => {
@@ -12,12 +13,15 @@ function ParkingLotCard({data}) {
         return capacity
     }
 
+    const handleClick = () => Router.push(`/parking-lot/${data.id}`)
+
     useEffect(() => {
         setCapacity(getCapacity())
     }, [capacity])
 
     return (
-        <Card className="col-md-12">
+        <Card
+            className="col-md-12">
             <Card.Body>
                 <Card.Title>{data.name}</Card.Title>
                 <Card.Text as="div">
@@ -31,6 +35,9 @@ function ParkingLotCard({data}) {
                         <li>Capacity: {capacity}</li>
                         <li>Parking Rate: {data.parkingRate}$</li>
                     </ul>
+                    <Button
+                        onClick={handleClick}
+                        variant="outline-dark" className="btn-sm">Update</Button>
                 </Card.Text>
             </Card.Body>
         </Card>
