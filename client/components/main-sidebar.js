@@ -204,6 +204,18 @@ function MainSidebar({ user }) {
                                 </a>
                             </Link>
                         </li>
+
+                        <li className="nav-header">PAYMENTS</li>
+                        <li className="nav-item">
+                            <Link href="/payments" >
+                                <a className="nav-link">
+                                    <i className="nav-icon fa fa-credit-card"></i>
+                                    <p>
+                                        Payments
+                                    </p>
+                                </a>
+                            </Link>
+                        </li>
                     </ul>
                 </nav>
             </div>

@@ -7,6 +7,7 @@ import { CommandHandlers } from './commands/handlers';
 import { Payment } from './entities/payment.entity';
 import { EventHandlers } from './events/handlers';
 import { PaymentController } from './payment.controller';
+import { QueryHandlers } from './queries/handlers';
 
 @Module({
   imports: [
@@ -18,7 +19,8 @@ import { PaymentController } from './payment.controller';
   controllers: [PaymentController],
   providers: [
     ...CommandHandlers,
-    ...EventHandlers
+    ...EventHandlers,
+    ...QueryHandlers
   ]
 })
 export class PaymentModule {}
