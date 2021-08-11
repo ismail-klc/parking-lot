@@ -14,7 +14,7 @@ export class GetPaymentsHandler implements IQueryHandler<GetPaymentsQuery> {
 
     async execute(query: GetPaymentsQuery) {
         console.log('Async GetPaymentsQuery...');
-        const payments = await this.repository.find({ relations: ['ticket']});
+        const payments = await this.repository.find({ relations: ['ticket', 'ticket.vehicle']});
         if (!payments) {
             throw new NotFoundException('No payments');
         }

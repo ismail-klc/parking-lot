@@ -51,7 +51,7 @@ export class GetStatisticsHandler implements IQueryHandler<GetStatisticsQuery> {
         let dailyEarnings = 0
         for (const ticket of tickets) {
             if (ticket.status === ParkingTicketStatus.Paid) {
-                dailyEarnings += parseFloat(ticket.payedAmount.toString())
+                dailyEarnings += parseFloat(parseFloat(ticket.payedAmount.toString()).toPrecision(2))
             }
         }
 

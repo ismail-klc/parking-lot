@@ -19,7 +19,7 @@ function NewParkingLot() {
         url: '/api/parking/parking-lot',
         method: 'post',
         body: {
-            name, streetAddress, city, state, zipcode, country, parkingRate
+            name, streetAddress, city, state, zipcode, country, parkingRate: parseInt(parkingRate)
         },
         onSuccess: () => Router.push('/parking-lot')
     });

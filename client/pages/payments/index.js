@@ -19,7 +19,11 @@ const columns = [
         selector: row => DateTime.fromISO(row.creationDate, { locale: "tr" }).toLocaleString(DateTime.DATETIME_MED),
         sortable: true,
     },
-
+    {
+        name: 'License Number',
+        selector: row => row.ticket.vehicle.licenseNumber,
+        sortable: true,
+    },
     {
         name: 'Amount',
         selector: row => `${row.amount}$`,
@@ -44,6 +48,7 @@ const columns = [
 ];
 
 function Payments({ data }) {
+    console.log(data);
     if (typeof window !== 'undefined') {
 
         return (
