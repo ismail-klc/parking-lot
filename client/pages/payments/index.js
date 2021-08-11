@@ -35,7 +35,7 @@ const columns = [
         sortable: true,
     },
     {
-        name: 'Vehicle Type',
+        name: 'Payment Type',
         selector: row => row.paymentType,
         sortable: true,
     },
