@@ -18,6 +18,7 @@ import { TicketController } from './ticket.controller';
   providers: [
     ...CommandHandlers,
     ...QueryHandlers
-  ]
+  ],
+  exports: [TypeOrmModule]
 })
 export class TicketModule {}

@@ -5,6 +5,7 @@ import { getConnectionOptions } from 'typeorm';
 import { AuthModule } from './auth/auth.module';
 import { JwtModule } from '@nestjs/jwt';
 import { TicketModule } from './ticket/ticket.module';
+import { PaymentModule } from './payment/payment.module';
 
 @Global()
 @Module({
@@ -22,6 +23,7 @@ import { TicketModule } from './ticket/ticket.module';
     }),
     AuthModule,
     TicketModule,
+    PaymentModule,
   ],
   exports: [JwtModule],
 })

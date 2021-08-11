@@ -5,6 +5,7 @@ import withAuth from '../../hocs/withAuth'
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import BillCard from '../../components/bill-card';
+import useRequest from '../../hooks/use-request';
 
 const useMountEffect = (fun) => useEffect(fun, [])
 
@@ -13,6 +14,7 @@ function Payment() {
     const [ticketId, setTicketId] = useState(query.ticketId || 0)
     const [ticket, setTicket] = useState(null)
     const [notFound, setNotFound] = useState(false)
+    
 
     const handleSubmit = async (e) => {
         if (e) {
@@ -31,7 +33,11 @@ function Payment() {
         }
     }
 
-    useMountEffect(() => handleSubmit())
+    useMountEffect(() => {
+        if (ticketId !== 0) {
+            handleSubmit()
+        }
+    })
 
     return (
         <div>

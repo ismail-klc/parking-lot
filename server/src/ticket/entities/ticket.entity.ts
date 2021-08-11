@@ -19,7 +19,7 @@ export class ParkingTicket {
     @Column({ nullable: true})
     payedAt: Date;
 
-    @Column({ nullable: true})
+    @Column({ nullable: true, type: 'decimal'})
     payedAmount: number;
 
     @Column({ default: ParkingTicketStatus.Active })
